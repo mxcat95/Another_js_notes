@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>JS基础知识</title>
+</head>
+
+<body>
+
+    <div id="box"></div>
+
+    <script src="./js/index.js"></script>
+    <!-- 
+        开发规范：
+            1.js代码放在单独的文件夹 js;
+            2.如果引入js 就不要在标签内部写代码;
+
+        js基础知识：
+            1.变量：
+                一个存储数据的可变的容器,操作变量等同于操作数据；
+                变量声明：
+                    let / var / const + blname = 初始值（可选）;
+                    LHS查询：找到要操作的目标   RHS查询： 找到目标源头的值 不一定是赋值操作;
+                使用变量：
+                    alert(blname) 不需要引号;
+                        引号建议：在js中 使用单引号；在css中使用双引号;
+                    blname = blname + 1
+                    左边的变量最终指向右边的运算结果！
+                    前端中 95% 都是 "=" 赋值的过程
+                命名规范：
+                    1.不能使用空格；
+                    2.支持下划线_ 大小写 特殊字符$ 甚至支持中文变量(不建议使用)；
+                    3.大小写敏感；
+                    4.不能以数字开头；
+                    5.尽量使用小写开头 使用小驼峰写法；
+                    6.尽量见名知意；(多累积一些英文单词)；
+                    7.不能使用内置关键字:
+                        常用关键字：  let var const function typeof 
+                                    for of in 
+                                    if else switch case default break continue...
+
+            2.简单dom操作：
+                1.给元素内部添加一些东西：
+                    js == dom ==> 找到操作目标 ——> 完成内容的添加；
+                    操作过程中 常用到的调试方法：console.log(变量) 用于查询、显示变量的情况；
+                    方法：
+                        通过各种选择器选中目标dom元素 然后完成一些指定的任务；
+                        console.log(document.querrySelector('#box')) // 查看获取到的id为box的标签的情况；
+                        选择器：
+                            document.querrySelector() // 选中第一个满足条件的元素；
+                            document.querrySelectorAll() // 选中所有满足条件的元素 保存在一个类数组中(NodeList)；
+                        添加：
+                            el.innerHTML += `想添加的任何标签`；
+                            el.innerText  = '只能添加文本'；
+                
+                2.点击事件：
+                    onclick: 这是浏览器中操作最频繁的事件；
+                    el.onclick = function(){
+                        需要实现的功能...
+                    }
+
+            作业：
+                   左右两个盒子： 
+                    点左边 右边变化；
+                    点右边 左边变化；
+                    具体如何变化 自行发挥！ 
+
+     -->
+</body>
+
+</html>

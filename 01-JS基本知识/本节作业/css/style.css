@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #000;
+}
+
+div{
+    position: absolute;
+    top: 300px;
+    float: left;
+    width: 200px;
+    height: 200px;
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    line-height: 200px;
+    border: 1px solid #ccfc;
+    background-color: rebeccapurple;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 3px 3px cornflowerblue;
+    transition: .5s;
+}
+
+.left{
+    left: 500px;   
+}
+
+.right {
+    right: 500px;
+}

@@ -1,0 +1,17 @@
+body,p,h1{
+    margin: 0;
+    padding: 0;
+}
+h1{
+    font-size: 60px;
+    text-align: center;
+}
+
+#box{
+    width: 600px;
+    height: 600px;
+    margin: 10px auto;
+    color: blanchedalmond;
+    font-size: 40px;
+    background-color: rebeccapurple;
+}

@@ -10,6 +10,86 @@
 
 <body>
     <h1>此页面用于划水！</h1>
-</body>
+
+    <body>
+        <input type="file" name="" value="" id="la">
+
+        <script>
+            // 从上传的文件中获取文件地址测试
+            var input = document.getElementById("la");
+            console.log(input);
+
+            input.onchange = function () {
+
+                var that = this;
+
+                console.log(that.files[0]);
+
+                var src = window.URL.createObjectURL(that.files[0])
+
+                console.log(src);
+
+                var img = document.createElement("img");
+
+                img.style.width = "200px";
+
+                img.src = src;
+
+                document.body.appendChild(img);
+            }
+
+            // 建码测试
+            document.body.addEventListener('keydown', e => {
+                console.log(e.keyCode)
+            })
+
+            // 函数参数测试
+            let x = 0
+
+            function add(n) {
+
+                n = 3
+                console.log(n)
+            }
+
+            add(x)
+            console.log(x)
+
+
+            // 求质数测试
+
+            // let i, j
+
+            // for (i = 3; i < 500; i++) {
+
+            //     let count = 0
+
+            //     for (j = 2; j < i; j++) {
+            //         if (i % j != 0) {
+            //             count++
+            //         }
+            //         if (count === i - 2) {
+            //             console.log(i);
+            //         }
+            //     }
+            // }
+
+            // console.log(i * j);
+
+            let m, n
+
+            for (m = 3; m < 500; m++) {
+                for (n = 2; n < m; n++) {
+                    if (m % n == 0) {
+                        break
+                    }
+                }
+                if (n >= m - 2) {
+                    console.log(m);
+                }
+            }
+            console.log(m * n);
+        </script>
+    </body>
 
 </html>

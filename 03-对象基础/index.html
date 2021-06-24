@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>对象基础</title>
+    </title>
+</head>
+
+<body>
+
+
+    <script src="./js/index.js"></script>
+
+    <!-- 
+        1.js中：万物皆对象！
+            js中所有数据都可以看成是对象！
+            {
+                name: '墨杉',
+                age: 18
+            }
+
+            Function
+
+            [1,2,3]
+
+            Number
+
+            string
+
+            null...
+
+            访问对象不存在的属性： undefined；
+            查询不存在的变量:  报错；
+
+        2.typeof 对象 / null == object；
+            所以 typeof无法精确判断类型；
+            null 实际上是上层语言定义出来的虚拟对象 本质上就是一个空指针；
+            只是规定了它的类型为 object；
+
+        3.对象的增删改查：
+            1.查询：
+                obj.a : 访问对象的"a"属性；
+                obj[a]: 访问对象的 a 属性 a是变量 a的值需要查询；
+                    实际上是一个表达式： 最终能获得一个值得运算式子；
+                obj["a"]: 同obj.a;
+            2.添加属性：
+                怎么查就怎么添加
+                obj.a = value
+                obj[a] = value
+                obj["a"] = value
+            3.添加属性：
+                怎么查就怎么修改
+                obj.a = value1
+                obj[a] = value1
+                obj["a"] = value1
+            4.删除属性：
+                怎么查就怎么删
+                delete obj.a
+                delete obj[a]
+                delete obj["a"]
+
+        4.特殊的对象：
+            数组：有序的数据集合
+                类数组对象：含有length属性，并且属性是 '1','2','3',..., 的对象；
+                访问方法也就是对象的属性访问方法；
+
+    -->
+</body>
+
+</html>

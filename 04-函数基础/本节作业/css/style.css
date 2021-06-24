@@ -1,0 +1,295 @@
+/* 背景颜色 */
+body {
+    background-color: #fec;
+}
+
+/* 表单字体和鼠标样式 */
+button,input{
+    font-family: "myfont";
+    cursor: pointer;
+}
+
+/* 输入框样式 */
+input{
+    width: 194px;
+    height: 30px;
+    outline: none;
+    border: 2px solid purple;
+    transition: .6s;
+}
+
+/* 聚焦改变样式 */
+input:focus{
+    outline: 2px solid red;
+}
+
+/* 按钮高度 */
+button{
+    height: 40px;
+    background-color: #fff;
+}
+
+/* 发送按钮和撤回按钮 */
+#send_l,
+#back_l,
+#send_r,
+#back_r{
+    width: 80px;
+    margin-top: 8px;
+}
+
+
+#back_l,
+#back_r{
+    margin-left: 30px;
+}
+
+/* ID和头像的确认按钮 */
+#yes_l,
+#yes_r{
+    width: 88px;
+    margin-top: 8px;
+} 
+
+/* 聊天室UI样式 */
+.chatRoom {
+    width: 1008px;
+    margin: 80px auto;
+    font-family: "myfont";
+    background: cadetblue;
+    border: 1px solid #000;
+    box-shadow: 0 0 3px 3px #ccdc;
+}
+
+/* 标题设置 */
+h1 {
+    font-size: 60px;
+    text-align: center;
+}
+
+/* 左右用户信息边栏 */
+.left_user,
+.right_user {
+    width: 200px;
+    height: 436px;
+}
+
+/* 通用透明玻璃背景 */
+.background{
+    background-color: #6653;
+    border: 1px solid #000;
+    box-shadow: 0 0 3px 3px #ccdc;
+}
+
+/* 聊天面板 */
+.chat{  
+    overflow: auto;
+    width: 600px;
+    height: 436px;
+    background-color: aliceblue;
+}
+
+/* 用户加入显示信息 */
+.lu,
+.ru{
+    overflow: auto;
+    height: 60px;
+    color: blue;
+}
+
+/* 音频标签隐藏 */
+audio{
+    display: none;
+}
+
+/*  */
+#userLe,
+#userRe{
+    display: block;
+    margin: 10px auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+/* 发言区 没注册之前先隐藏 */
+.sayL,
+.sayR{
+    display: none;
+    height: 90px;
+    margin-top: 24px;
+    border: 1px solid #ccfc;
+}
+
+/* 文件表单样式设置 默认影藏*/
+#l_img,
+#r_img{
+    width: 100px;
+    height: 100px;
+    visibility: hidden;
+    z-index: 10;
+}
+
+/* 头像预览区 */
+#headl,
+#headr{
+    left: 0;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    margin-top: 8px;
+    cursor: pointer;
+    border: 1px solid #000;
+    background: url("../images/5.webp") no-repeat center/cover;
+    z-index: 9;
+}
+
+/* 用户消息样式 */
+.mes_l,
+.mes_r{
+    width: 450px;
+    margin: 10px 0;
+}
+/* 清除浮动 */
+.mes_l::after,
+.mes_r::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 用户头像布局 */
+.header_l,
+.header_r {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+/* 消息气泡 头像 昵称都设置浮动 */
+.mes_l,
+.header_l,
+.header_l~span{
+    float: left;
+}
+
+.mes_r,
+.header_r,
+.header_r~span{
+    float: right;
+}
+
+/* 用户昵称样式 */
+.header_l~span,
+.header_r~span {
+    display: inline-block;
+    height: 30px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+    vertical-align: top;
+}
+
+.header_l~span{
+    margin-left: 5px;
+}
+
+.header_r~span{
+    margin-right: 5px;
+}
+
+/* 用户文字信息样式 */
+.header_l ~ p,
+.header_r ~ p{
+    height: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
+    line-height: 30px;
+    border-radius: 8px;
+    text-align: right;
+    border: 1px solid #000;
+    clear: both;
+}
+
+.header_l~p {
+    float: left;
+    margin-left: 40px;
+    background-color: beige;
+}
+
+.header_r ~ p{
+    float: right;
+    margin-right: 40px;
+    background-color: ghostwhite;
+}
+
+/* 消息撤回提示样式 */
+.backtip{
+    width: 600px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+/* 提示信息显示样式 */
+.backtip p{
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    background-color: aliceblue;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+/* 提示信息文字样式 */
+.backtip p span:nth-child(1){
+    color: blueviolet;
+}
+.backtip p span:nth-child(2) {
+    color: grey;
+}
+
+/* 音乐模块 */
+.music {
+    display: flex;  /* 使用弹性盒模型布局  复习一下弹性盒模型 */
+    flex-flow: initial initial; /* 排列方向 换行方向 */
+    justify-content: space-evenly; /* 在主轴的排列方式 均匀散开*/
+    /* align-content: center;  交叉轴的排列 */
+    align-items: center; /* 主轴的每个元素在交叉轴上的排列方式 居中 */
+    width: 600px;
+    height: 160px;
+    background-color: rgba(39, 41,45, 0.9);
+    background-size: auto;
+    border-radius: 10px;
+}
+
+/* 音乐按钮 */
+.music button{
+    display: block;
+    width: 120px;
+    height: 120px;
+    background: url("../images/music.webp");
+    border-radius: 50%;
+    transition: .6s;
+}
+
+/* 雪碧图 */
+.music button:nth-child(1){
+    background-position: -86px -22px;
+}
+
+.music button:nth-child(2),
+.music button:nth-child(3) {
+    background-position: -312px -22px;
+}
+
+.music button:hover{
+    border: 2px solid red;
+    margin-top: -10px;
+}
+
+
+
+

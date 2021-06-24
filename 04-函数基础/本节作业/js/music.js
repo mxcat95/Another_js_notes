@@ -55,10 +55,6 @@ control.play.addEventListener('click', () => {
     }
 })
 
-control.play.addEventListener('mouseup', () => {
-
-})
-
 // 上一曲
 
 function preMusic() {

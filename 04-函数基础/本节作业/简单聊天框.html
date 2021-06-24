@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../src/css/default.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/heartBeat.css">
+    <title>简单聊天框</title>
+</head>
+
+<body>
+    <div class="chatRoom clearfix">
+        <h1 class="background">欢迎进入聊天室！</h1>
+        <div class="left_user fl_l background pos_r">
+            <input type="text" placeholder="请输入您的昵称！" id="user_l">
+            <br>
+            <input type="file" name="头像左" id="l_img">
+            <span id="headl" class="pos_a">请选择头像：</span>
+
+            <button id="yes_l">确定</button>
+
+            <div class="lu">等待客人加入中...</div>
+            <img src="./images/3.webp" alt="表情包" id="userLe">
+
+            <div class="sayL">
+                <input type="text" id="input_l" placeholder="请发言！">
+                <button id="send_l">发言</button>
+                <button id="back_l">撤回</button>
+            </div>
+        </div>
+
+        <main class="chat fl_l background"></main>
+
+        <div class="right_user fl_l background pos_r">
+            <input type="text" placeholder="请输入您的昵称！" id="user_r">
+            <br>
+            <input type="file" name="头像右" id="r_img">
+            <span id="headr" class="pos_a">请选择头像：</span>
+
+            <button id="yes_r">确定</button>
+
+            <div class="ru">等待客人加入中...</div>
+            <img src="./images/4.webp" alt="表情包" id="userRe">
+
+            <div class="sayR">
+                <input type="text" id="input_r" placeholder="请发言！">
+                <button id="send_r">发言</button>
+                <button id="back_r">撤回</button>
+            </div>
+        </div>
+
+        <div id="wrap_l" class="fl_l">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div id="wrap_r" class="fl_r">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <div class="backtip fl_l background">
+            <p id="tip">当前无消息撤回！</p>
+        </div>
+
+        <div class="music fl_l background">
+            <button id="pre"></button>
+            <button id="play"></button>
+            <button id="next"></button>
+        </div>
+    </div>
+
+
+
+    </div>
+
+    <audio id="aud" src="./audio/Alpha.mp3" controls></audio>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/music.js"></script>
+</body>
+
+</html>

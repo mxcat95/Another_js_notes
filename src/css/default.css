@@ -1,0 +1,74 @@
+/* 清除一些默认样式 */
+body,
+p,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+/* 输入框 */
+input{
+    padding: 0;
+}
+
+/* 按钮 */
+button{
+    padding: 0;
+}
+
+/* ul默认样式  */
+ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+/* 超链接的默认样式 */
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+/* 左浮动 */
+.fl_l {
+    float: left;
+}
+
+/* 右浮动 */
+.fl_r {
+    float: right;
+}
+
+/* 清除浮动 */
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 相对定位 */
+.pos_r{
+    position: relative;
+}
+
+/* 绝对定位 */
+.pos_a{
+    position: absolute;
+}
+
+/* 溢出隐藏 */
+.hidden{
+    overflow: hidden;           /* 隐藏 */
+    text-overflow: ellipsis;    /* 省略号表示 */
+    white-space: nowrap;        /* 不换行 */
+}
+
+/* 自定义字体 */
+@font-face {
+    font-family: "myfont";
+    src: url("../font/国潮手书.ttf");
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/default.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>类型转换</title>
+</head>
+
+<body>
+
+    <img src="./images/1.png" alt="作业" title="作业求解！">
+    <button>点击查看答案</button>
+    <ul id="answer"></ul>
+    <script src="./js/index.js"></script>
+    <!-- 
+        类型转换：
+            js六大数据类型中，同类型之间是可以运算的；
+            不同类型之间，也是可以运算的，但是需要进行类型转换；
+
+        在js中，类型转换是动态进行的：
+            即类型在操作的过程中 会进行转换 转换成相同的类型 再进行运算；
+
+        常见的类型转换方式：
+            首先强调一点：
+                我们没有理由将其他数据类型转化为undefined、null、对象，因为没有意义；
+
+            (1) 任意类型转字符串：
+                标准方法：String(🤣): 直接转为字符串 (直接加引号)
+
+                数值：
+                    直接加引号 
+                    
+                    加空字符串：123 + '' == '123'
+
+                布尔值：
+                    true => "true"
+                    false => "false"
+
+                undefined => "undefined"
+
+                null => "null"
+
+                对象：(难点)
+                    普通对象：
+                        一般情况：
+                             "[object Object]";
+                        特殊对象：
+                            实现了toSting的对象：
+                            调用toString方法 使用返回值 转为字符串；
+                        使用场景：
+                            1.参与字符串加法运算的时候；
+                                {} + "123" => "[object Object]123";
+                                {} - "123" => NaN; 加法之外的其他运算 都是数学运算；
+                                let a = {} a + 123 => "[object Object]123"
+                                但是：直接控制台：{} + 123 => 123 因为大括号被解析为代码块
+
+                                {} + {} => "[object Object][object Object]"
+                                {} - {} => NaN
+
+                    数组：
+                        去掉中括号 左右两边加引号；
+                        
+                        String([1,{}]) => "1,[object Object]";
+                        [] + 123 => '123';
+                        [] + [] => "";
+                        [] - [] => 0;
+                        [] + {} => [object Object];
+
+                    函数：
+                        把整个函数都原样复制 加个引号；
+
+                        String(()=>{return 1}) => "() => {return 1}"
+
+            (2) 任意类型转数值：
+                标准方法：Number(🤣) 合理就转为数值 不合理就转为NaN；
+
+                字符串：
+                    看上去像数值就可以转，否则就不能；
+                    '123' * 1 = 123
+                  
+                    parseInt('1.2.3'): 1 从首位开始，选取字符串中第一个整数；
+                    paresFloat('1.2.3'): 1.2 从首位开始，选取字符串中第一个浮点数部分；
+                        首位不是数字 都会转为 NaN;
+                
+                布尔值：
+                    true => 1;
+                    false => 0;
+
+                undefined： => NaN;
+                
+                null： => 0;
+
+                对象：
+                    一般情况下 都是NaN；
+                    但是 如果对象实现了toString 或者 valueOf 方法，就可以转换为数值；
+                    原因：
+                        底层调用了对象的toString(优先调用valueOf)方法，强行将对象转化为数值；
+                        let obj = {
+                            toString: function(){
+                                return 666
+                            },
+                            valueOf: function(){
+                                return 333
+                            }
+                        }
+                    Number(obj) => 333
+                数组：
+                    [] => 0;
+                    [1] => 1;
+                    ['123'] => 123;
+                    [1,2,3,...] => NaN
+                    [有toString | valueOf 的对象] => 对象的返回值
+                    [其他] => NaN
+
+            (3) 任意类型转布尔值：
+                布尔值就两个值： true  || fasle;
+
+                能转为true的类型：
+                    "非空字符串"、非零数值、数组(包括空数组)、对象...
+                    只要不是下面六种，都是true;
+                能转为fasle的类型：
+                    ""、0、NaN、undefined、null、false；
+
+                    在true类型前面加个 ！表示取反，也就是fasle;
+
+                转换方法：
+                    Boolean(o) 可将传入的类型转换为布尔类型；
+                    !(!表达式) 可直接转换为布尔类型；
+                判断相等：
+                    == : 允许类型转换之后比较；
+                    === : 不允许类型转换比较 严格模式；
+                    开发中首选 ===；
+
+                    != : 不等；🙌
+                    !=== : 不全等；🤣
+
+        总结： 类型转换坑很多 尤其是对象和其他类型之间的转换 记住基础的常用的转换即可；
+
+        作业：就是图片里的各种运算式
+     -->
+
+    <!-- 
+         一些细节：
+            不同类型的数据之间，再运算时，明确是数学运算的 一定会转成数值，
+            有非数学运算可能的，谁在前，就转换成谁的类型；加号 优先转字符串；
+
+            ![] ==> false; 转布尔值
+            +[] ==> 0；空数组转数值 0
+            +![] ==> 0
+            [] + [] ==> ''
+            {} + {} ==> [o O][o O] 解析为字符串
+            !注意：{} + [] ==> 0 大括号会被转化为代码块 等同于 +[] == 0
+            !但是：({} + {}) ==> '[o O]'  加个小括号就会转为字符串
+    -->
+</body>
+
+</html>

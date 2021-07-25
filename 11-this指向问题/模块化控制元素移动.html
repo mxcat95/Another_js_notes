@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/default.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>键控移动模块粗糙版</title>
+</head>
+
+<body>
+    <div class="box pos_r">
+        <div class="person1 pos_a">1</div>
+        <div class="person2 pos_a">2</div>
+    </div>
+
+    <script>
+        // 盒子模块
+        // 每一个可移动的盒子对象 都具备位置属性 以及移动方法
+
+        // 根据盒子类名 初始位置 来创建可移动盒对象
+        function createMoveBox(className, dx, dy) {
+
+            return {
+                el: document.querySelector(className), // 盒子
+                x: dx, // 盒子的横坐标
+                y: dy, // 盒子的纵坐标
+                // 盒子的移动方法： 上下左右移动
+                moveUp: function () {
+                    this.y -= 10
+                    if (this.y <= 0) {
+                        this.y = 0
+                    }
+                    this.el.style.cssText = `top: ${this.y}px; left: ${this.x}px;`
+                },
+                moveDown: function () {
+                    this.y += 10
+
+                    if (this.y >= 440) {
+                        this.y = 440
+                    }
+                    this.el.style.cssText = `top: ${this.y}px; left: ${this.x}px;`
+                },
+                moveLeft: function () {
+                    this.x -= 10
+                    if (this.x <= 0) {
+                        this.x = 0
+                    }
+                    this.el.style.cssText = `top: ${this.y}px; left: ${this.x}px;`
+                },
+                moveRight: function () {
+                    this.x += 10
+                    if (this.x >= 560) {
+                        this.x = 560
+                    }
+                    this.el.style.cssText = `top: ${this.y}px; left: ${this.x}px;`
+                }
+            }
+        }
+
+        let box1 = createMoveBox('.person1', 0, 0)
+        let box2 = createMoveBox('.person2', 560, 0)
+
+        // 键盘模块
+        window.onkeydown = function (e) {
+            switch (e.key) {
+                // 盒子1 移动
+                case 'w':
+                    box1.moveUp()
+                    break
+                case 's':
+                    box1.moveDown()
+                    break
+                case 'a':
+                    box1.moveLeft()
+                    break
+                case 'd':
+                    box1.moveRight()
+                    break
+
+                    // 盒子2 移动
+                case 'ArrowUp':
+                    box2.moveUp()
+                    break
+                case 'ArrowDown':
+                    box2.moveDown()
+                    break
+                case 'ArrowLeft':
+                    box2.moveLeft()
+                    break
+                case 'ArrowRight':
+                    box2.moveRight()
+                    break
+                default:
+                    break
+            }
+        }
+    </script>
+
+    <!-- 
+        功能：
+            通过wasd键控 让小方块在大方框里移动
+            w: 上
+            s：下
+            a：左
+            d：右
+
+        事件：
+            onkeydown 按下键盘触发
+            onkeyup 按下按键 抬起的时候触发
+
+        优化：
+            目前这样的写法 自然是可以有很多优化空间的；
+            但是这个代码 主要是想体现一下 this 在初步面向对象的思想中 所起到的作用；
+            可以让我们的业务开发更加清晰和简洁；
+     -->
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <style>
+        body {
+            background: #000;
+        }
+
+        .box {
+            width: 600px;
+            height: 500px;
+            margin: 100px auto 0;
+            border: 2px solid purple;
+        }
+
+        p {
+            height: 40px;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box"></div>
+    <script type="module">
+        import { includes,indexOf,replaceAll,urlToObj} from './作业.js'
+
+        let box = document.querySelector('.box')
+
+        let str = 'asfgdvsfg'
+
+        box.innerHTML += `<p>${includes(str,'dvsf')}</p>`
+        
+        box.innerHTML += `<p>${indexOf('你好,我好，大家好','好')}</p>`
+
+        box.innerHTML += `<p>${replaceAll('你好，我好，大家好','好','🤣')}</p>`
+
+        let url = 'username=mx&passward=9527&isAdmin=1'
+
+        box.innerHTML += `<p>${urlToObj(url)}</p>`
+        
+
+    </script>
+</body>
+
+</html>

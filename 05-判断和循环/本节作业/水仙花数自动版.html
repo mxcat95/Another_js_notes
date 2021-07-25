@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../src/css/default.css">
+
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .box {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 600px;
+            height: 500px;
+            margin: 100px auto;
+            border: 2px solid purple;
+            box-shadow: 5px 5px 5px 5px darkslateblue;
+            border-radius: 10px;
+        }
+
+        #shui {
+            display: block;
+            width: 400px;
+            height: 240px;
+            border: 3px solid darkcyan;
+            border-radius: 10px;
+        }
+
+        legend {
+            color: darkorange;
+            font-size: 30px;
+            font-family: "myfont";
+        }
+
+        h1 {
+            height: 60px;
+            color: chocolate;
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            height: 36px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 6px;
+            transition: .6s;
+            font-size: 16px;
+            color: #fff;
+            background: darkcyan;
+        }
+
+        button:hover {
+            box-shadow: 1px 1px 1px 1px #ccfc;
+        }
+
+        p {
+            overflow: hidden;
+            width: 280px;
+            height: 60px;
+            height: 0px;
+            margin-top: 26px;
+            margin-left: 50px;
+            color: orange;
+            font-size: 20px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 10px;
+            transition: .6s;
+        }
+    </style>
+    <title>水仙花数自动查找版</title>
+</head>
+
+<body>
+    <div class="box">
+
+        <fieldset id="shui">
+            <legend>水仙花数自动查找</legend>
+            <h1>我帮你找水仙花数！</h1>
+            <button id="btn">点击查看所有所有水仙花数！</button>
+            <p id="answer"></p>
+        </fieldset>
+    </div>
+
+    <script>
+        // 获取dom元素
+        let btn = document.querySelector('#btn')
+        let anw = document.querySelector('#answer')
+
+        // 提交判断是否为水仙花数 根据不同的状态执行不同的操作
+        btn.addEventListener('click', () => {
+
+            // 点击即开启提示信息
+            anw.style.cssText = `
+                height: 60px;
+                border: 2px solid darkmagenta;
+            `
+            // 找到所有水仙花数
+            let str = '' // 计数器
+            for (let i = 100; i < 1000; i++) {
+                if (isShuiXianHua(i + '')) {
+                    str += `${i}、`
+                    anw.style.color = 'lightgreen'
+                }
+            }
+
+            // 去掉最后一个顿号 禁用点击事件
+            anw.innerText = str.slice(0, str.length - 1)
+            anw.style.overflow = 'auto'
+            btn.style.pointerEvents = 'none'
+
+        })
+
+        // 判断水仙花数的函数
+        function isShuiXianHua(num) {
+
+            // 直接使用下标来查询
+
+            if (num * 1 === cubeSum(num[2], num[1], num[0])) {
+                return true
+            }
+            return false
+        }
+
+        // 计算三个数的立方和
+        function cubeSum(x, y, z) {
+            return x * x * x + y * y * y + z * z * z
+        }
+    </script>
+</body>
+
+</html>

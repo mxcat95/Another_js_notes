@@ -1,0 +1,10 @@
+ul{
+    width: 200px;
+}
+
+li{
+    height: 20px;
+    text-align: center;
+    background-color: plum;
+    border-bottom: 1px solid black;
+}

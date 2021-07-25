@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串常用API</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="./index.js"></script>
+
+    <!-- 
+
+        字符串重要特性：字符串无法被修改，包括长度；
+
+        字符串常用API：(Application Programes Interface 应用程序接口)
+            1.length: 字符串长度； ≥ 0； 空格也是一个字符；
+
+            2.下标：[] 即索引，用于访问每一个字符；
+
+            3.at(): 下标访问方式；
+
+            4.charAt(): 也是访问下标的方式 用于兼容早期的IE浏览器；
+
+            5.charCodeAt(): 仍然是下标访问 返回该位置的字符所对应的 ASCII码;
+
+            6.String.fromCharCodeAt(): charCode的逆过程 将编码转化为字符；
+
+            7.concat()： 字符串拼接；
+
+            8.startsWith(): 是否以...开头
+            9.endsWith(): 是否以...结尾；
+
+            10.includes(): 是否包含某个字符；
+
+            作业： 请自行实现一个 includes 方法：
+                接收参数： str 原字符串 key 需要判断的字符串
+
+                返回 true | false
+
+                includes(str,key)
+
+            11.indexOf('要查询的字符'，从哪里开始): 成功返回 第一个匹配的下标 失败返回 -1；
+
+            作业：请自行实现 indexOf的方法 并对它进行更合理的改造；
+                比如 查询不到 不要返回 -1 而是返回更人性化的提示;
+                只接受一个参数 能返回 所有匹配项的 下标；
+
+            12.lastIndexOf('?',begin): 逆向查找;
+
+            13.repeat(100): 重复100次；
+
+            14.replace('要替换的字符'，'想替换的内容'): 替换第一个匹配的字符，返回一个新的字符串；
+            
+            15.replaceAll(): 替换所有匹配的字符;
+
+            作业： 请自行实现一个 replaceAll的方法，并设计成为一个像样的API；
+
+            16.toUpperCase(): 转大写字母
+            17.toLowerCase(): 转小写字母
+            18.toLocaleUpperCase(): 转为本地大写
+            19.toLocaleLowerCase(): 转为本地小写
+
+            20.trim(): 去除两边的空格；适用于用户输入的时候 修剪左右的空格；
+            
+
+            核心API：字符串的裁剪:
+
+                21.split(): 切割 将字符串 以某种方式 切割成数组
+                22.split(''): 逐个字符拆分；
+
+                开发中，访问网址的时候：
+                   username=mx&passward=9527&isAdmin=1
+                   
+                   get 请求： 发送数据携带在url中的 ？后面 以 & 符号连接多段数据 
+                   每段数据 用 = 分隔 (key=value)
+            
+                后台怎么拿到:
+                {
+                    属性名：属性值，
+                    属性名：属性值，
+                    ......
+                }
+
+                作业：实现一个函数，使得url能转换成对象类型；
+
+                23.slice(start,end): 切片 提取相应区间 [s,e) 的字符；
+                    如果参数为 负数 ： 从右边第一位计算起；
+                24.substr(start, length): 从指定位置 截取指定长度的 字符串；
+                    如果 第一个参数 为负数 ： 从右边第一位计算起；
+                25.substring(start,end): 同样是切片 不常用；
+                    
+    -->
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/default.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>数字键盘</title>
+</head>
+
+<body>
+
+    <div class="box"></div>
+
+    <script>
+        // 实现一个函数 让数字键 0 ~ 9 被按下 在屏幕上输出相对应的大写汉字
+
+        // 输入情况： 总共10种 可以考虑使用一个数组来解决 构建一张映射表
+
+        // 思想：建立一个映射关系 直接访问这个映射关系 得出答案
+
+        let changeMap = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
+
+        function change(num) {
+            return changeMap[num]
+        }
+
+        window.onkeydown = e => {
+            if (!changeMap[e.key]) {
+                return
+            }
+            document.querySelector('.box').style.color = '#fff'
+            document.querySelector('.box').innerHTML += change(e.key)
+        }
+    </script>
+</body>
+
+</html>

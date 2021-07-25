@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../src/css/default.css">
+
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .box {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 600px;
+            height: 260px;
+            margin: 100px auto 0;
+            border: 2px solid purple;
+            box-shadow: 5px 5px 5px 5px darkslateblue;
+            border-radius: 10px;
+        }
+
+        #shui {
+            display: block;
+            width: 400px;
+            height: 180px;
+            border: 3px solid darkcyan;
+            border-radius: 10px;
+        }
+
+        legend {
+            color: darkorange;
+            font-size: 30px;
+            font-family: "myfont";
+        }
+
+        h1 {
+            height: 60px;
+            color: chocolate;
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            height: 36px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 6px;
+            transition: .6s;
+            font-size: 16px;
+            color: #fff;
+            background: darkcyan;
+        }
+
+        button:hover {
+            color: yellow;
+            box-shadow: 1px 1px 1px 1px #ccfc;
+        }
+
+        ul {
+            overflow: hidden;
+            width: 1080px;
+            height: 0px;
+            margin: 30px auto 0;
+            padding-left: 50px;
+            border-radius: 10px;
+            transition: .6s;
+        }
+
+        li {
+            height: 40px;
+            line-height: 40px;
+        }
+
+        li span {
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            text-align: justify;
+            color: orange;
+            font-size: 20px;
+        }
+    </style>
+    <title>九九乘法表</title>
+</head>
+
+<body>
+    <div class="box">
+
+        <fieldset id="shui">
+            <legend>九九乘法表</legend>
+            </legend>
+            <h1>一键生成九九乘法表</h1>
+            <button id="btn">生成九九乘法表</button>
+        </fieldset>
+    </div>
+
+    <ul id="answer"></ul>
+
+    <script>
+        // 获取dom元素
+        let btn = document.querySelector('#btn')
+        let anw = document.querySelector('#answer')
+
+        // 提交判断是否为水仙花数 根据不同的状态执行不同的操作
+        btn.addEventListener('click', () => {
+
+            // 点击即开启提示信息
+            anw.style.cssText = `
+                border: 2px solid red;
+                height: 360px;
+            `
+
+            multable(anw)
+            btn.style.pointerEvents = 'none'
+
+        })
+
+        // 九九乘法表函数
+        function multable(el) {
+            for (let i = 1; i < 10; i++) {
+                el.innerHTML += `<li></li>`
+                for (let j = 1; j <= i; j++) {
+                    el.children[i - 1].innerHTML += `<span>${j}×${i}=${i*j}</span>`
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/default.css">
+    <title>简单动画</title>
+    <style>
+        body {
+            background: #000;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            font-size: 3em;
+            color: goldenrod;
+            line-height: 200px;
+            text-align: center;
+            border: 2px solid blanchedalmond;
+            background-color: purple;
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+            cursor: pointer;
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">BOX</div>
+    <button onclick="move()">开始运动</button>
+    <button onclick="stop()">结束运动</button>
+    <script>
+        let box = document.querySelector('.box')
+
+        let x = 0 // 向右的偏移量
+
+        let v = 5 // 运动速度
+
+        let timer = null
+
+        // 渲染盒子的位置
+        function render() {
+            box.style.transform = `translateX(${x}px)`
+        }
+
+        // 实现一个盒子向右移动的动画 就是在极短的时间内 改变盒子的位置 然后渲染
+        // 这个极短时间 小于16ms才能欺骗人眼
+        // 动画的时间间隔： 和显示器的刷新率有关
+        // 一般 采用 60帧的刷新率
+
+        // x 变成 300 就反弹 变成 0 再弹回去
+
+        // 当然 这样写是有问题的 多次点击开始运动 会创建多个定时器 而且无法清除 需要对开始按钮做 点击限制
+
+
+        // 开始运动
+        function move() {
+
+            let time = 1000 / 60
+            timer = setInterval(() => {
+
+                // 边界限制
+                if (x >= 600) {
+                    v = -5
+                }
+
+                // 边界限制
+                if (x <= 0) {
+                    v = 5
+                }
+
+                // 快速渲染
+                x += v
+                render()
+            }, time)
+
+            console.log(x, v)
+            console.log(timer)
+        }
+
+        // 停止运动
+        function stop() {
+            clearInterval(timer)
+            timer = null
+        }
+    </script>
+</body>
+
+</html>

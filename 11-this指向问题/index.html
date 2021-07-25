@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/default.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>this指向问题</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script src="./index.js"></script>
+    <!-- 
+        this:
+            1.this是什么？
+                this： 这个 是一个代词 指代某样东西
+                在js中 this 通常指代对象；
+                它指代某个函数的调用主体；
+                只有在函数中讨论this 才有意义；
+                
+            2.this存在的意义？
+                让函数在执行的过程中变得更加灵活！
+                
+                能将函数交给各自的对象独立执行，完成各自的功能；
+                这也是一种思想： 即面向对象的思想；
+                    将对象和功能 封装成独立封闭的整体，
+                    可以保证属性和功能的私有性、安全性，
+                    能让其他的文件或者模块也能使用它的功能，
+                    提高了代码的可复用性！
+
+            3.那谁在调用函数？
+                通常就是：
+                    window: 浏览器窗口
+                    DOM: 文档对象
+                    BOM：浏览器对象；
+                    一些其他对象，包括自定义对象、数组、字符串等...
+
+            4.this的指向问题：
+                一般情况下，函数被谁调用，this就指向谁,跟它在哪个地方执行没有关系；
+                如果找不到调用主体，就是window；
+
+                let obj = {
+                    fn: func (){
+                        log(this) 
+                    }
+                }
+
+                obj.fn() // obj  此时就是obj在调用函数
+
+            5.箭头函数的this:
+                会强行绑定到上下文中！(声明位置的上一行和声明位置的下一行)
+                箭头函数的this 永远指向 该函数 被声明时候所在的环境；
+                跟谁调用它没有关系;
+
+                也就是说，箭头函数内部不会去绑定 this、arguments等，而是会根据
+                作用域链机制 去查找其父级(外部)的 this；
+
+                简单来说就是：
+                    (1) 找到箭头函数所在的位置
+                    (2) 找到箭头函数被创建的位置
+                    (3) 只要箭头函数被创建了，无论它在哪里执行，
+                        this 都会指向创建时候的环境；
+                
+                精简总结： 
+                    不要把箭头函数当成函数 它就是一个表达式，
+                    它本质上简化了 this 的指向，解决了普通函数的某些问题；
+
+                如果某个对象的某个属性是箭头函数，那其中的 this会指向 window；
+
+                let obj = {
+                    fn: () => log(this)
+                }
+                obj.fn() // window
+
+                其实等价于：
+
+                let f = () => log(this)
+                let obj = {
+                    fn: f
+                }
+                obj.fn() // window
+                
+                所以，这样的箭头函数 作为对象属性，是无法使用this访问对象本身的
+                也无法通过 bind 去修改 this指向 因为 该函数始终都是 在 window下创建的；
+                let ff = f.bind(obj)
+                ff() // window
+
+            6.this指向的修改：
+                通常情况下，this指向了调用函数的主题对象；
+                但是我们可以手动修改this的指向；
+
+                使用bind 可以绑定函数的调用主体，
+                于是 该函数的this指向 就会指向被绑定的 这个对象；
+
+                let obj = {
+                    fn(){
+                        log(this)
+                    }
+                }
+
+                let obj2
+
+                let f = obj.fn.bind(obj2)
+                f() // 指向obj2
+     -->
+</body>
+
+</html>

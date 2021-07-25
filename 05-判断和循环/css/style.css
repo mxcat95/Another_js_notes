@@ -1,0 +1,32 @@
+input{
+    width: 800px;
+    height: 200px;
+    font-size: 60px;
+}
+
+button{
+    width: 400px;
+    height: 200px;
+    font-size: 60px;
+}
+
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+li{
+    box-sizing: border-box;
+    padding-top: 6px;
+    text-align: center;
+    font-size: 24px;
+    width: 800px;
+    height: 40px;
+    border-bottom: 5px solid #ccc;
+}
+p{
+    margin: 20px 0;
+    width: 800px;
+    height: 100px;
+    font-size: 60px;
+}

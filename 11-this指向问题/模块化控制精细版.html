@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/default.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>键控移动模块精细版</title>
+</head>
+
+<body>
+    <div class="box pos_r">
+        <div class="person1 pos_a">1</div>
+    </div>
+
+    <script>
+        // 按键 上 下 左 右 左上 右上 左下 右下
+        let key = ['w', 's', 'a', 'd', 'q', 'e', 'z', 'x']
+
+        // 速度映射表 这是一种配置模式 使得我们修改移动功能更加简化
+        let keyMap = {
+            w: {
+                vx: 0,
+                vy: -1
+            },
+            s: {
+                vx: 0,
+                vy: 1
+            },
+            a: {
+                vx: -1,
+                vy: 0
+            },
+            d: {
+                vx: 1,
+                vy: 0
+            },
+            q: {
+                vx: -1,
+                vy: -1
+            },
+            e: {
+                vx: 1,
+                vy: -1
+            },
+            z: {
+                vx: -1,
+                vy: 1
+            },
+            x: {
+                vx: 1,
+                vy: 1
+            }
+        }
+
+        // 盒子模块
+        let person = {
+            el: document.querySelector('.person1'),
+            x: 0,
+            y: 0,
+
+            // 移动方向
+            moveTo(dir) {
+                // 根据传入的方向 做出相应的动作
+                if (!key.includes(dir)) {
+                    return
+                }
+
+                // 计算偏移位置
+                this.x += keyMap[dir].vx * 20
+                this.y += keyMap[dir].vy * 20
+                // 判断边界条件
+                this.moveToBoder()
+                // 改变相应的位置
+                this.el.style.cssText = `top: ${this.y}px; left: ${this.x}px;`
+            },
+
+            // 边界条件
+            moveToBoder() {
+                if (this.y <= 0) {
+                    this.y = 0
+                }
+                if (this.y >= 440) {
+                    this.y = 440
+                }
+                if (this.x <= 0) {
+                    this.x = 0
+                }
+                if (this.x >= 560) {
+                    this.x = 560
+                }
+            }
+        }
+
+        // 键盘事件监听 移动控制
+        window.onkeydown = function (e) {
+            person.moveTo(e.key)
+        }
+    </script>
+</body>
+
+</html>

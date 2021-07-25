@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数学对象</title>
+</head>
+
+<body>
+
+    <script>
+        /**
+         *  数学对象： Math
+         *      最常用的常量：
+         *          PI: 圆周率 3.1415926...用于计算相关的面积 体积 比例等...
+         *      常见的方法：
+         *          1.取整：
+         *              (1).floor(n) 向下取整；在x数字坐标轴上 往左边取最近的那个整数；
+         *                  floor(3.1) 3; floor(-3.1) -4
+         * 
+         *              (2).ceil(n) 向上取整； 在x数字坐标轴上 往右边取最近的那个整数；
+         * 
+         *              (3).round(n) 四舍五入
+         *                  round(-3.5) -3
+         * 
+         *              (4).trunc(n) 舍去小数部分 只保留整数
+         *          2.绝对值：
+         *              .abs(-1) = 1 负号变为正号；
+         * 
+         *          3.最值方法：
+         *              .max(...args) 返回最大的那个；
+         *              .min(...args) 返回最小的那个；
+         * 
+         *          4.运算方法：
+         *              .pow(x,n) 幂运算 x 的 n 次方；
+         *              .sqrt(x) x的平方根；
+         *              .cbrt(x) x的立方根； 不过平方，立方都可以用pow实现，感觉多此一举；
+         *          
+         *          6.随机数：非常实用的一个API
+         *              .random() 随机生成一个 0 ~ 1 之间的随机数；
+         *                  边界几乎达不到 因为概率非常之小；
+         * 
+         *              随机数区间：
+         *                  (1).0 ~ n: Math.random() * n;
+         *                  (2).a ~ b: random() * (b - a ) + a;
+         *                  
+         *                  利用随机数 结合取整的方法，就可以生成任意区间内的随机整数；
+         *                  不过需要考虑很多情况：
+         *                      比如 小数区间、负数区间、小数和整数夹杂、如何取整等...
+         */
+
+
+        //  计算圆面积的函数
+        function area(r) {
+            return Math.PI * r * r
+        }
+
+        // 抛硬币
+        function coin() {
+            return Math.random() < 0.5
+        }
+
+        // 掷骰子 六种情况 1 2 3 4 5 6
+        function dice() {
+            return Math.ceil(Math.random() * 6)
+        }
+
+        // 统计骰子的分布情况
+        let result = {
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            6: 0
+        }
+
+        // 统计一百万次
+        for (let i = 0; i < 1000000; i++) {
+            result[dice()]++
+        }
+
+        console.log(result)
+        // {1: 166467, 2: 166890, 3: 167204, 4: 166490, 5: 166502, 6: 166447}
+
+        // 随着统计数量的增加 可以看到 random 返回的随机数的分布 是近似 均匀的
+        // 骰子投一次 每种情况 的概率 近似等于 16.7% 就可以认为 这些情况 等概率出现 p = 1 / 6;
+
+        // 抽卡中奖概率
+        // 六星卡 2% 五星卡 8% 四星卡 40% 三星卡 50%
+
+        function getCard() {
+
+            let rt = Math.random()
+
+            if (rt <= 0.02) {
+                return '六星卡'
+            }
+
+            if (rt <= 0.10) {
+                return '五星卡'
+            }
+
+            if (rt <= 0.50) {
+                return '四星卡'
+            }
+
+            return '三星卡'
+        }
+
+        let obj = {
+            '六星卡': 0,
+            '五星卡': 0,
+            '四星卡': 0,
+            '三星卡': 0
+        }
+
+        for (let i = 0; i < 100; i++) {
+            obj[getCard()]++
+        }
+        console.log(obj) // {六星卡: 2, 五星卡: 6, 四星卡: 42, 三星卡: 50}
+    </script>
+</body>
+
+</html>

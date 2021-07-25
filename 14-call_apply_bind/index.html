@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this在函数中的只想问题</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>1</li>
+        <li>-1</li>
+        <li>2</li>
+        <li>-2</li>
+        <li>3</li>
+        <li>-3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        // 业务需求： 筛选出所有 编号大于 0 的 li 标签 并存放到数组里
+
+        let lis = document.querySelectorAll('li')
+
+        try {
+            let newLi = lis.filter(li => li.innerHTML * 1 > 0)
+        } catch (error) {
+            console.log(error) // 报错 因为 lis 不是一个真正的数组 无法使用filter方法
+        }
+
+        // 虽然它不是数组 但是长得跟数组一样 我们可以用数组的方法去操作它；
+
+        let filter = [].filter.bind(lis) // 拿到这个函数
+
+        // 这个方法通常是谁在调用？ 是它前面的东西在调用，也就是那个数组！
+        // 所以 回调函数中的 this 指向那个数组
+
+        // 可以使用 bind 去修改 this的指向
+
+        console.log(filter(li => li.innerHTML * 1 > 0)) // 此时 就可以使用数组方法去操作类数组了
+    </script>
+
+    <!-- 
+        在JS中 虽然很多写法不互通 但是可以通过修改调用主体 借用别人的方法来解决问题
+
+        可以使用三种方式 修改函数的调用主体：
+
+        1.call：
+            fn.call(调用主体，...args) 函数接收的参数 是离散的
+        2.apply:
+            fn.apply(调用主体，[...args]) 与call一毛一样 只是参数 是以数组的形式传入
+        3.bind:
+            fn.bind(调用主体，...绑定参数)
+
+            优点：可以分两次传参 可以永久记录被绑定时候传入的那个值
+                也就是 函数的柯理化思想： 将多个参数的函数 改成一个参数的函数；
+     -->
+
+    <script>
+        let a = {
+            id: 'a',
+            value: 1,
+            sayID() {
+                console.log(this.id)
+            },
+            add() {
+                // 不定参数求和
+                return [].reduce.call(arguments, (t, i) => t + i, this.value)
+            }
+        }
+
+        let b = {
+            id: 'b',
+            value: 2
+        }
+
+        a.sayID() // a
+
+        a.sayID.call(b) // b 修改了调用主体
+
+        console.log(a.add(1, 2, 3)) // 7
+
+        console.log(a.add.call(b, 1, 2, 3)) // 8
+
+        console.log(a.add.apply(b, [1, 2, 3])) // 8 apply与call唯一的不同就在于 参数的形式
+
+        let init = a.add.bind(b, 10) // 绑定初始值 10 + b.value = 12
+
+        console.log(init(12)) // 24  再传入 12 去跟初始值 相加 12 + 12 = 24
+    </script>
+</body>
+
+</html>

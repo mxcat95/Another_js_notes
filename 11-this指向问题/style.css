@@ -1,0 +1,36 @@
+body{
+    background-color: black;
+}
+
+ul {
+    width: 200px;
+}
+
+li {
+    height: 20px;
+    text-align: center;
+    background-color: plum;
+    border-bottom: 1px solid black;
+}
+
+.box{
+    width: 600px;
+    height: 480px;
+    margin: 200px auto 0;
+    border: 2px solid purple;
+}
+
+.person1,
+.person2{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: yellow;
+    background-color: cadetblue;
+    border: 1px solid yellow;
+}
+
+.person2{
+    right: 0px; 
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/default.css">
+    <title>日期对象</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./index.js"></script>
+    <!-- 
+        日期：常用的 时间 API
+            常用概念： 获取系统时间 设置系统时间 计算系统时间；
+
+        
+        Data对象：
+            构造函数： 可生成对象 本质上就是一个函数 只是调用方法和普通函数不一样；
+                通过 new 操作符来调用 生成一个新的 日期对象；
+
+                let date = new Date()
+
+        时间的获取：
+            主要是调用其API
+                获取：年 月 日 时 分 秒
+
+                js的时间 是从 1900年0时0分0秒开始计时的；
+
+                年：
+                .getFullYear(): 公元纪年 获取当前年份；
+                .getYear(): 计算从1900年1月1日0时0分0秒 到当前的 年份；
+
+                月：
+                .getMonth(): 获取当前月份 但是是从0开始计数的 具体使用的时候 请手动 +1
+
+                日：
+                .getDate(): 获取当天日期
+                .getDay(): 获取星期几 返回一个数字； 0 ~ 6 周日到周六
+
+                时：
+                .getHours(): 获取当前 小时数；
+
+                分：
+                .getMinutes(): 获取当前 分钟数；
+                
+                秒：
+                .getSeconds(): 获取当前 秒钟数；
+
+        时间的设置：
+            let t1 = date.valueOf() + 10000 十秒之后的时间
+            let t1Date = new Date(t1)  就能设置十秒之后的时间
+     -->
+</body>
+
+</html>

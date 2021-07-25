@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/default.css">
+    <title>定时器</title>
+    <style>
+        body {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="./index.js"></script>
+
+    <!-- 
+        JS的运行机制：
+            按顺序 从上往下执行 ===> 但凡上面的代码没有执行完，下面的代码就不能执行；
+            
+            也就是 同步代码：按顺序依次去执行；(几乎所有代码都是同步代码)
+
+            当同步代码没有执行完毕的时候 执行任何操作都是无效的；
+
+            js执行永远是 同步代码执行完 异步代码执行！
+
+            异步代码：完全脱离同步范围 单独去执行；
+                异步代码存放的位置：
+                    存在于调用栈中，由浏览器去扫描 任务队列 判断该执行同步还是异步；
+                只有几种：
+                    1.事件是一种异步代码；
+
+                    2.定时器：规定了某一时刻之后再去执行的代码;
+
+                        时延定时器：
+
+                            setTimeout(cb,time) 经过 time 毫秒之后 执行 cb() 操作；
+                            定时器不会影响后续代码的执行！
+
+                            返回值：返回定时器的编号 可用变量接收 用于后续清除该定时器；
+
+                            一般都使用 null 初始化一个定时器编号；
+
+                            let timer = null;
+
+                            多个定时器之间 是同步的；
+
+                        间隔定时器：
+                            setInterval(cb,time) 每隔 time 毫秒 执行一次 cb()
+
+                            用法和setTimeout一致；
+
+                            可以用来做动画；
+
+                        定时器的清除：
+                            clearTimeout(timer): timer 定时器的编号；
+                            clearInterval(timer): timer 定时器的编号；
+
+                            通常使用 setTimeout 来清除 setInterval；
+                        
+                        定时器回调函数的参数：
+                            setTimeout(console.log,1000,1,2,3)
+                            其参数是 时延 后面的无限个实参
+
+                        定时器内部回调函数的 this 指向：
+                            在没有修改this指向的情况下，都指向 window
+                            可以使用bind修改this指向；
+
+                            let obj = {
+                                fn: function(){}
+                            }
+
+                            setTimeout(obj.fn.bind(obj),1000)  {fn: f}
+
+
+                异步代码的特点：
+                    1.完全不阻塞页面的渲染和js代码的执行；
+                    2.可以修改代码的执行顺序，形成优先顺序；
+     -->
+</body>
+
+</html>

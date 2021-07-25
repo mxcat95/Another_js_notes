@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../src/css/default.css">
+
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .box {
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 600px;
+            height: 500px;
+            margin: 100px auto;
+            border: 2px solid purple;
+            box-shadow: 5px 5px 5px 5px darkslateblue;
+            border-radius: 10px;
+        }
+
+        #shui {
+            display: block;
+            width: 400px;
+            height: 240px;
+            border: 3px solid darkcyan;
+            border-radius: 10px;
+        }
+
+        legend {
+            color: darkorange;
+            font-size: 30px;
+            font-family: "myfont";
+        }
+
+        span {
+            display: block;
+            overflow: hidden;
+            bottom: -150px;
+            width: 400px;
+            height: 120px;
+            height: 0px;
+            color: cadetblue;
+            line-height: 30px;
+            text-indent: 2em;
+            text-align: justify;
+            border-radius: 10px;
+            transition: 1s;
+        }
+
+        h1 {
+            height: 60px;
+            color: chocolate;
+            text-align: center;
+        }
+
+        input {
+            width: 200px;
+            height: 30px;
+            margin-left: 56px;
+            margin-top: 10px;
+            outline: none;
+            border: 3px solid purple;
+            background: none;
+            color: sandybrown;
+            transition: .6s;
+        }
+
+        input:hover {
+            border: 2px solid orangered;
+        }
+
+        button {
+            width: 60px;
+            height: 36px;
+            background-color: #fff;
+            border-radius: 6px;
+            transition: .6s;
+            font-size: 16px;
+            color: #fff;
+            background: darkcyan;
+        }
+
+        button:hover {
+            box-shadow: 1px 1px 1px 1px #ccfc;
+        }
+
+        p {
+            overflow: hidden;
+            width: 280px;
+            height: 60px;
+            height: 0px;
+            margin-top: 26px;
+            margin-left: 50px;
+            color: orange;
+            font-size: 20px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 10px;
+            transition: .6s;
+        }
+    </style>
+    <title>水仙花数</title>
+</head>
+
+<body>
+    <div class="box">
+
+        <fieldset id="shui">
+            <legend>水仙花数判断</legend>
+            <h1>请输入一个三位数！</h1>
+            <input type="text" id="num" placeholder="请输入一个三位数！" maxlength="3">
+            <button id="btn">提交</button>
+            <p id="answer">这里是查询结果！</p>
+        </fieldset>
+        <span class="tips"><strong>水仙花数</strong>也被称为超完全数字不变数、自恋数、自幂数、
+            阿姆斯壮数或阿姆斯特朗数，是指一个 3 位数的每个位上的数字的 3次幂之和等于它本身。
+            三位水仙花数共4个：153，370，371，407。
+        </span>
+    </div>
+
+    <script>
+        // 获取dom元素
+        let input = document.querySelector('#num')
+        let btn = document.querySelector('#btn')
+        let anw = document.querySelector('#answer')
+
+        // 点击输入框 把提示信息隐藏起来
+        input.onclick = () => {
+            // 答案区隐藏
+            anw.style.cssText = `
+                height: 0px;
+            `
+
+            // 提示区隐藏
+            document.querySelector('.tips').style.cssText = `
+                height: 0px;
+            `
+        }
+
+        // 提交判断是否为水仙花数 根据不同的状态执行不同的操作
+        btn.addEventListener('click', () => {
+
+            // 点击即开启提示信息
+            anw.style.cssText = `
+                height: 60px;
+                border: 2px solid darkmagenta;
+            `
+            // 先检测输入情况 保证输入的值不为空
+            if (input.value === '') {
+                anw.innerHTML = `请输入一个三位数！`
+                return
+            }
+
+            // 然后为了防止 有 '故意找茬' 的杠精 也过滤一下非数值字符
+            if (!isFinite(input.value)) {
+                alert('我就知道有人要当杠精！\n\n这么大的标题提醒你，要输入一个数字!\n\n你非要写其他的！！！')
+                anw.innerHTML = `请输入一个三位数！`
+                input.value = ''
+                return
+            }
+
+            // 如果是水仙花数 则提示正确
+            if (isShuiXianHua(input.value * 1)) {
+                anw.innerHTML = `${input.value} 是一个水仙花数！`
+                anw.style.color = 'lightgreen'
+                input.value = ''
+                return
+            }
+
+
+            // 不是水仙花数也提示一下
+            anw.innerHTML = `${input.value} 不是一个水仙花数！`
+            anw.style.color = 'red'
+            input.value = ''
+
+            // 并且把水仙花数的介绍信息弹出来
+            document.querySelector('.tips').style.cssText = `
+                height: 120px;
+                padding: 10px;
+                border: 5px double cadetblue;
+            `
+
+        })
+
+        // 判断水仙花数的函数
+        function isShuiXianHua(num) {
+
+            // 以目前的知识，暂时使用比较原始的数学算法
+            let a = num % 10 // 获取个位数
+            let b = (num - a) / 10 % 10 // 获取十位
+            let c = (num - b * 10 - a) / 100 // 获取百位
+
+            if (num === cubeSum(a, b, c)) {
+                return true
+            }
+            return false
+        }
+
+        // 计算三个数的立方和
+        function cubeSum(x, y, z) {
+            return x * x * x + y * y * y + z * z * z
+        }
+    </script>
+</body>
+
+</html>

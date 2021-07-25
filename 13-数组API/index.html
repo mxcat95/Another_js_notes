@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组API</title>
+    <style>
+        body {
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script src="./index.js"></script>
+    <!-- 
+        数组常用API：
+           1.length: 数组长度 跟字符串不一样 数组的长度是可以更改的； 
+                如果 改大了 多余的项目为 空；
+                如果 改小了 后面的项目被抹除；
+
+                可用 .length = 0 清空数组；
+
+            2.concat(...itmes):  数组拼接 返回一个新数组；
+                不合理的地方 会把数组拆开一层来进行拼接；
+
+            作业：自己实现一个concat(arr1,arr2),返回数组拼接的结果
+                要求： 不准使用 [..arr1,...arr2];
+
+            3.copyWithin: 浅拷贝；
+
+            4.数组的头尾插入和删除：
+                尾部插入元素：
+                    .push(...items) 返回数组长度 插入顺序和参数顺序一致；
+
+                尾部删除元素：
+                    .pop() 无参数 删除最后一个元素 返回被删除的元素；
+                头部插入元素：
+                    .unshift(...items) 多个参数 返回数组长度；
+                头部删除元素：
+                    .shift() 返回被删除的元素；
+
+            5.倒序方法：
+                .reverse(): 全部反向排序 返回排序后的结果 修改原数组
+
+            6.遍历方法：
+                .forEach((item,index，array) => {
+                    某些操作...
+                }):
+
+                forEach(fn) 传入一个回调函数 即回头调用的函数；
+                数组里每一项传入的时候 再去调用这个行为函数 完成某个功能； 
+
+                语法知识：
+                    forEach接收一个参数： 回调函数cb；
+                    回调函数接收三个参数：cb(item,index,array) 元素 下标 数组；
+
+                    arr.forEach(console.log) 等价于：
+                    arr.forEach((...args) => console.log(...args))
+
+                    回调函数不需要返回值 它只是对数组进行某些操作而已 并不会改变原数组；
+
+            7.过滤方法：
+                .every((item,index,arr) => {...}): 判断所有元素是否都满足条件 
+                                                   都满足则返回 true 否则返回 false；
+                .some((item,index,arr) => {...}): 判断是否有一项满足；
+
+                .filter((item,index,array) => {...}): 筛选满足条件的元素，返回一个新数组；
+
+            8.map(cb): 传入一个回调函数 返回一个新数组；
+
+            9.reduce(cb,init): 统计核心 将每一个元素进行运算 从init开始运算 默认从第一项
+                cb(total，item，index，array) 返回迭代体 total
+
+                这个 init 存在的意义： 统一迭代的数据类型；
+                
+                作业：实现一个reduce方法；
+
+            10.数组排序：
+                .sort(): 对数组排序
+                    如果不加任何限制 就会默认按照字符串的 ASCII 编码 排序；
+
+                    参数：回调函数 接收两个参数 描述了两个元素的 排序方式；
+                        返回一个数值 根据数值的情况对数组元素进行排序；
+                        sort((v1,v2) =>{...})
+
+            11.数组扁平化方法：将维操作
+                .flat() 默认将数组降低一个维度
+                .flat(n) 展开n层
+                .flatMap() 先展开 然后执行 map的方法；
+            12.数组拼接为字符串：
+                .join('+') 以加号拼接每一项；
+
+            13.数组裁切：
+                splice(start,删除几个元素，添加的元素) 
+                    最强大的一个API 包含数组的 增 删 改 查 操作；会修改原数组；
+                    返回被删除的元素组成的数组；
+
+                splice(1) 从第一位开始 全部删除；
+                splice(1,3) 从第一位开始 删除三位；
+
+                多次删除 建议从后往前删；
+
+                splice(1,3,'要添加的内容',...)
+
+            10.reducRight(cb,init): 从数组末尾开始迭代 reduce的反向操作；
+     -->
+</body>
+
+</html>
